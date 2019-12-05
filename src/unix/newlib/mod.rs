@@ -1,6 +1,6 @@
 pub type blkcnt_t = i32;
 pub type blksize_t = i32;
-pub type clock_t = i32;
+pub type clock_t = ::c_ulong;
 pub type clockid_t = ::c_ulong;
 pub type dev_t = u32;
 pub type fsblkcnt_t = u64;
