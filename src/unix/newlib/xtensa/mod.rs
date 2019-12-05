@@ -54,7 +54,9 @@ pub const POLLWRBAND: ::c_short  = 1 << 4;
 pub const POLLERR: ::c_short     = 1 << 5;
 pub const POLLHUP: ::c_short     = 1 << 6;
 
-f! {
+pub const PTHREAD_STACK_MIN: ::size_t = 200;
+
+extern "C" {
     pub fn writev(
         s: ::c_int,
         iov: *const ::iovec,
