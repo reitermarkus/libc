@@ -5,6 +5,11 @@ pub type c_long = i32;
 pub type c_ulong = u32;
 
 s! {
+    pub struct sockaddr_un {
+        pub sun_family: ::c_short,
+        pub sun_path: [::c_char; 108],
+    }
+
     pub struct sockaddr {
         pub sa_len: u8,
         pub sa_family: ::sa_family_t,
@@ -35,4 +40,29 @@ s! {
         pub s2_data2: [u32; 3],
         pub s2_data3: [u32; 3],
     }
-  }
+}
+
+pub const AF_UNIX: ::c_short = 1;
+
+pub const POLLIN: ::c_short      = 1 << 0;
+pub const POLLRDNORM: ::c_short  = 1 << 1;
+pub const POLLRDBAND: ::c_short  = 1 << 2;
+pub const POLLPRI: ::c_short     = POLLRDBAND;
+pub const POLLOUT: ::c_short     = 1 << 3;
+pub const POLLWRNORM: ::c_short  = POLLOUT;
+pub const POLLWRBAND: ::c_short  = 1 << 4;
+pub const POLLERR: ::c_short     = 1 << 5;
+pub const POLLHUP: ::c_short     = 1 << 6;
+
+f! {
+    pub fn writev(
+        s: ::c_int,
+        iov: *const ::iovec,
+        iovcnt: ::c_int,
+    ) -> ::c_int;
+    pub fn readv(
+        fd: ::c_int,
+        iov: *const ::iovec,
+        iovcnt: ::c_int,
+    ) -> ::ssize_t;
+}

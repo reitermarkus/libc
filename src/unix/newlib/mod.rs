@@ -335,6 +335,9 @@ pub const ENOTRECOVERABLE: ::c_int = 141;
 pub const EOWNERDEAD: ::c_int = 142;
 pub const EWOULDBLOCK: ::c_int = 11;
 
+pub const EXIT_FAILURE: ::c_int = 1;
+pub const EXIT_SUCCESS: ::c_int = 0;
+
 pub const F_DUPFD: ::c_int = 0;
 pub const F_GETFD: ::c_int = 1;
 pub const F_SETFD: ::c_int = 2;
@@ -547,6 +550,9 @@ pub const EAI_MEMORY: ::c_int = -304;
 pub const EAI_NONAME: ::c_int = -305;
 pub const EAI_SOCKTYPE: ::c_int = -307;
 
+// Dummy
+pub const EAI_SYSTEM: ::c_int = -11;
+
 f! {
     pub fn FD_CLR(fd: ::c_int, set: *mut fd_set) -> () {
         let bits = ::mem::size_of_val(&(*set).fds_bits[0]) * 8;
@@ -660,6 +666,10 @@ extern "C" {
         how: ::c_int,
         set: *const sigset_t,
         oldset: *mut sigset_t,
+    ) -> ::c_int;
+    pub fn pthread_condattr_setclock(
+      attr: *mut pthread_condattr_t,
+      clock_id: clockid_t,
     ) -> ::c_int;
     pub fn sem_open(name: *const ::c_char, oflag: ::c_int, ...) -> *mut sem_t;
     pub fn getgrnam(name: *const ::c_char) -> *mut ::group;
