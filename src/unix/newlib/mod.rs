@@ -866,6 +866,7 @@ extern "C" {
         child: ::Option<unsafe extern "C" fn()>,
     ) -> ::c_int;
     pub fn getgrgid(gid: ::gid_t) -> *mut ::group;
+    pub fn setgroups(ngroups: ::c_int, grouplist: *const ::gid_t) -> ::c_int;
     pub fn popen(command: *const c_char, mode: *const c_char) -> *mut ::FILE;
     pub fn uname(buf: *mut ::utsname) -> ::c_int;
 }
