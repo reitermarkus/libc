@@ -56,6 +56,9 @@ pub const POLLHUP: ::c_short     = 1 << 6;
 
 pub const PTHREAD_STACK_MIN: ::size_t = 200;
 
+// Dummy
+pub const RTLD_DEFAULT: *mut ::c_void = 0i64 as *mut ::c_void;
+
 extern "C" {
     pub fn writev(
         s: ::c_int,
