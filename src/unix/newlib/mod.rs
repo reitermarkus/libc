@@ -102,6 +102,8 @@ s! {
         pub tm_wday: ::c_int,
         pub tm_yday: ::c_int,
         pub tm_isdst: ::c_int,
+        pub __TM_GMTOFF: ::c_long,
+        pub __TM_ZONE: *const ::c_char,
     }
 
     pub struct stat {
@@ -215,7 +217,7 @@ s! {
         __lockkind: ::c_int,
         __pshared: ::c_int,
     }
-}
+  }
 
 // unverified constants
 align_const! {
