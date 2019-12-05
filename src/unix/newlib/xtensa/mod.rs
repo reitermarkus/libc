@@ -44,15 +44,15 @@ s! {
 
 pub const AF_UNIX: ::c_short = 1;
 
-pub const POLLIN: ::c_short      = 1 << 0;
-pub const POLLRDNORM: ::c_short  = 1 << 1;
-pub const POLLRDBAND: ::c_short  = 1 << 2;
-pub const POLLPRI: ::c_short     = POLLRDBAND;
-pub const POLLOUT: ::c_short     = 1 << 3;
-pub const POLLWRNORM: ::c_short  = POLLOUT;
-pub const POLLWRBAND: ::c_short  = 1 << 4;
-pub const POLLERR: ::c_short     = 1 << 5;
-pub const POLLHUP: ::c_short     = 1 << 6;
+pub const POLLIN: ::c_short = 1 << 0;
+pub const POLLRDNORM: ::c_short = 1 << 1;
+pub const POLLRDBAND: ::c_short = 1 << 2;
+pub const POLLPRI: ::c_short = POLLRDBAND;
+pub const POLLOUT: ::c_short = 1 << 3;
+pub const POLLWRNORM: ::c_short = POLLOUT;
+pub const POLLWRBAND: ::c_short = 1 << 4;
+pub const POLLERR: ::c_short = 1 << 5;
+pub const POLLHUP: ::c_short = 1 << 6;
 
 pub const PTHREAD_STACK_MIN: ::size_t = 200;
 
@@ -60,11 +60,8 @@ pub const PTHREAD_STACK_MIN: ::size_t = 200;
 pub const RTLD_DEFAULT: *mut ::c_void = 0i64 as *mut ::c_void;
 
 extern "C" {
-    pub fn writev(
-        s: ::c_int,
-        iov: *const ::iovec,
-        iovcnt: ::c_int,
-    ) -> ::c_int;
+    pub fn writev(s: ::c_int, iov: *const ::iovec, iovcnt: ::c_int)
+        -> ::c_int;
     pub fn readv(
         fd: ::c_int,
         iov: *const ::iovec,
