@@ -582,6 +582,7 @@ f! {
     }
 }
 
+pub const SIG_SETMASK: ::c_int = 0;
 pub const SIGINT: ::c_int  = 1;
 pub const SIGKILL: ::c_int = 2;
 pub const SIGPIPE: ::c_int = 3;
@@ -830,6 +831,12 @@ extern "C" {
         buf: *mut ::c_char,
         buflen: ::size_t,
         result: *mut *mut ::group,
+    ) -> ::c_int;
+    pub fn pthread_create(
+        thread: *mut ::pthread_t,
+        attr: *const ::pthread_attr_t,
+        start_routine: extern "C" fn(*mut ::c_void) -> *mut ::c_void,
+        arg: *mut ::c_void,
     ) -> ::c_int;
     pub fn pthread_sigmask(
         how: ::c_int,
