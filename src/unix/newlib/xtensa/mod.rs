@@ -6,7 +6,7 @@ pub type c_ulong = u32;
 
 s! {
     pub struct sockaddr_un {
-        pub sun_family: ::c_short,
+        pub sun_family: ::sa_family_t,
         pub sun_path: [::c_char; 108],
     }
 
@@ -42,7 +42,7 @@ s! {
     }
 }
 
-pub const AF_UNIX: ::c_short = 1;
+pub const AF_UNIX: ::c_int = 1;
 
 pub const POLLIN: ::c_short = 1 << 0;
 pub const POLLRDNORM: ::c_short = 1 << 1;
