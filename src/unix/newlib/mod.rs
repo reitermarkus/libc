@@ -412,6 +412,7 @@ pub const S_IROTH: ::mode_t = 4;
 pub const S_IWOTH: ::mode_t = 2;
 pub const S_IXOTH: ::mode_t = 1;
 
+#[cfg(not(target_arch = "xtensa"))]
 pub const SOL_SOCKET: ::c_int = 65535;
 pub const SOL_TCP: ::c_int = 6;
 

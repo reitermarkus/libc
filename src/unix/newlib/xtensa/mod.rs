@@ -45,6 +45,7 @@ s! {
 pub const AF_UNIX: ::c_int = 1;
 
 pub const FIONBIO: ::c_ulong = 2147772030;
+pub const SOL_SOCKET: ::c_int = 0xfff;
 
 pub const POLLIN: ::c_short = 1 << 0;
 pub const POLLRDNORM: ::c_short = 1 << 1;
