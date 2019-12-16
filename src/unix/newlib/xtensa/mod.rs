@@ -5,6 +5,22 @@ pub type c_long = i32;
 pub type c_ulong = u32;
 
 s! {
+    pub struct cmsghdr {
+        pub cmsg_len: ::socklen_t,
+        pub cmsg_level: ::c_int,
+        pub cmsg_type: ::c_int,
+    }
+
+    pub struct msghdr {
+        pub msg_name: *mut ::c_void,
+        pub msg_namelen: ::socklen_t,
+        pub msg_iov: *mut ::iovec,
+        pub msg_iovlen: ::c_int,
+        pub msg_control: *mut ::c_void,
+        pub msg_controllen: ::socklen_t,
+        pub msg_flags: ::c_int,
+    }
+
     pub struct sockaddr_un {
         pub sun_family: ::sa_family_t,
         pub sun_path: [::c_char; 108],
@@ -63,6 +79,9 @@ pub const PTHREAD_STACK_MIN: ::size_t = 200;
 pub const RTLD_DEFAULT: *mut ::c_void = 0i64 as *mut ::c_void;
 
 extern "C" {
+    pub fn sendmsg(s: ::c_int, msg: *const ::msghdr, flags: ::c_int) -> ::ssize_t;
+    pub fn recvmsg(s: ::c_int, msg: *mut ::msghdr, flags: ::c_int) -> ::ssize_t;
+
     pub fn writev(s: ::c_int, iov: *const ::iovec, iovcnt: ::c_int)
         -> ::c_int;
     pub fn readv(
