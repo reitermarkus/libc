@@ -31,8 +31,15 @@ s! {
         pub ai_socktype: ::c_int,
         pub ai_protocol: ::c_int,
         pub ai_addrlen: socklen_t,
-        pub ai_canonname: *mut ::c_char,
+
+        #[cfg(target_arch = "xtensa")]
         pub ai_addr: *mut sockaddr,
+
+        pub ai_canonname: *mut ::c_char,
+
+        #[cfg(not(target_arch = "xtensa"))]
+        pub ai_addr: *mut sockaddr,
+
         pub ai_next: *mut addrinfo,
     }
 
