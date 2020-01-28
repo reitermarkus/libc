@@ -224,7 +224,7 @@ s! {
         __lockkind: ::c_int,
         __pshared: ::c_int,
     }
-  }
+}
 
 // unverified constants
 align_const! {
