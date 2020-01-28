@@ -74,8 +74,16 @@ pub const POLLERR: ::c_short = 1 << 5;
 pub const POLLHUP: ::c_short = 1 << 6;
 
 extern "C" {
-    pub fn sendmsg(s: ::c_int, msg: *const ::msghdr, flags: ::c_int) -> ::ssize_t;
-    pub fn recvmsg(s: ::c_int, msg: *mut ::msghdr, flags: ::c_int) -> ::ssize_t;
+    pub fn sendmsg(
+        s: ::c_int,
+        msg: *const ::msghdr,
+        flags: ::c_int,
+    ) -> ::ssize_t;
+    pub fn recvmsg(
+        s: ::c_int,
+        msg: *mut ::msghdr,
+        flags: ::c_int,
+    ) -> ::ssize_t;
 
     pub fn writev(s: ::c_int, iov: *const ::iovec, iovcnt: ::c_int)
         -> ::c_int;
