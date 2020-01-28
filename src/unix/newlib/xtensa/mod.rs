@@ -73,11 +73,6 @@ pub const POLLWRBAND: ::c_short = 1 << 4;
 pub const POLLERR: ::c_short = 1 << 5;
 pub const POLLHUP: ::c_short = 1 << 6;
 
-pub const PTHREAD_STACK_MIN: ::size_t = 200;
-
-// Dummy
-pub const RTLD_DEFAULT: *mut ::c_void = 0i64 as *mut ::c_void;
-
 extern "C" {
     pub fn sendmsg(s: ::c_int, msg: *const ::msghdr, flags: ::c_int) -> ::ssize_t;
     pub fn recvmsg(s: ::c_int, msg: *mut ::msghdr, flags: ::c_int) -> ::ssize_t;
